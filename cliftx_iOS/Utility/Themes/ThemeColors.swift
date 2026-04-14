@@ -9,32 +9,54 @@
 import SwiftUI
 import Combine
 
-// Centralized color definitions that the app can reuse
-public enum ThemeColors {
-    // Base palette (customize freely)
-    public static let oceanPrimary = Color(red: 0.4, green: 0.6, blue: 0.9)
-    public static let oceanAccent  = Color(red: 0.5, green: 0.7, blue: 1.0)
 
-    public static let purplePrimary = Color(red: 0.6, green: 0.4, blue: 0.9)
-    public static let purpleAccent  = Color(red: 0.7, green: 0.5, blue: 1.0)
-
-    public static let mintPrimary = Color(red: 0.2, green: 0.8, blue: 0.6)
-    public static let mintAccent  = Color(red: 0.3, green: 0.9, blue: 0.7)
-
-    public static let sunsetPrimary = Color(red: 0.9, green: 0.5, blue: 0.3)
-    public static let sunsetAccent  = Color(red: 1.0, green: 0.6, blue: 0.4)
-
-    public static let rosePrimary = Color(red: 0.8, green: 0.3, blue: 0.5)
-    public static let roseAccent  = Color(red: 0.9, green: 0.4, blue: 0.6)
-
-    // Common semantic colors
-    public static let backgroundDark = Color(red: 0.08, green: 0.08, blue: 0.12)
-    public static let surfaceDark = Color(red: 0.12, green: 0.12, blue: 0.16)
-    public static let textPrimaryOnDark = Color.white
-    public static let textSecondaryOnDark = Color.white.opacity(0.7)
+extension Color {
+    static func dynamic(
+        light: UIColor,
+        dark: UIColor
+    ) -> Color {
+        Color(UIColor { trait in
+            trait.userInterfaceStyle == .dark ? dark : light
+        })
+    }
 }
 
-// Theme model
+public enum ThemeColors {
+
+    // MARK: - Apple Indigo (Primary Premium Color)
+    public static let primary = Color.dynamic(
+        light: UIColor(red: 0.30, green: 0.40, blue: 0.95, alpha: 1),
+        dark:  UIColor(red: 0.45, green: 0.55, blue: 1.00, alpha: 1)
+    )
+
+    public static let accent = Color.dynamic(
+        light: UIColor(red: 0.20, green: 0.30, blue: 0.85, alpha: 1),
+        dark:  UIColor(red: 0.60, green: 0.70, blue: 1.00, alpha: 1)
+    )
+
+    // MARK: - Backgrounds (Apple Standard)
+    public static let background = Color.dynamic(
+        light: UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1),
+        dark:  UIColor(red: 0.05, green: 0.06, blue: 0.10, alpha: 1)
+    )
+
+    public static let surface = Color.dynamic(
+        light: UIColor.white,
+        dark:  UIColor(red: 0.10, green: 0.12, blue: 0.16, alpha: 1)
+    )
+
+    // MARK: - Text
+    public static let textPrimary = Color.dynamic(
+        light: UIColor.black,
+        dark:  UIColor.white
+    )
+
+    public static let textSecondary = Color.dynamic(
+        light: UIColor.darkGray,
+        dark:  UIColor.white.withAlphaComponent(0.7)
+    )
+}
+
 public struct AppTheme: Identifiable, Equatable {
     public let id: String
     public let name: String
@@ -44,35 +66,31 @@ public struct AppTheme: Identifiable, Equatable {
     public let surface: Color
     public let textPrimary: Color
     public let textSecondary: Color
-
-    public init(id: String, name: String, primary: Color, accent: Color, background: Color, surface: Color, textPrimary: Color, textSecondary: Color) {
-        self.id = id
-        self.name = name
-        self.primary = primary
-        self.accent = accent
-        self.background = background
-        self.surface = surface
-        self.textPrimary = textPrimary
-        self.textSecondary = textSecondary
-    }
 }
 
-// Manager to provide and switch themes app-wide
-public final class ThemeManager: ObservableObject {
-    @Published public var themes: [AppTheme]
-    @Published public var selectedIndex: Int
 
-    public var current: AppTheme { themes[selectedIndex] }
+public final class ThemeManager: ObservableObject {
+
+    @Published public var themes: [AppTheme]
+    @Published public var selectedIndex: Int = 0
+
+    public var current: AppTheme {
+        themes[selectedIndex]
+    }
 
     public init() {
         self.themes = [
-            AppTheme(id: "ocean", name: "Ocean Blue", primary: ThemeColors.oceanPrimary, accent: ThemeColors.oceanAccent, background: ThemeColors.backgroundDark, surface: ThemeColors.surfaceDark, textPrimary: ThemeColors.textPrimaryOnDark, textSecondary: ThemeColors.textSecondaryOnDark),
-            AppTheme(id: "purple", name: "Purple Dream", primary: ThemeColors.purplePrimary, accent: ThemeColors.purpleAccent, background: ThemeColors.backgroundDark, surface: ThemeColors.surfaceDark, textPrimary: ThemeColors.textPrimaryOnDark, textSecondary: ThemeColors.textSecondaryOnDark),
-            AppTheme(id: "mint", name: "Mint Fresh", primary: ThemeColors.mintPrimary, accent: ThemeColors.mintAccent, background: ThemeColors.backgroundDark, surface: ThemeColors.surfaceDark, textPrimary: ThemeColors.textPrimaryOnDark, textSecondary: ThemeColors.textSecondaryOnDark),
-            AppTheme(id: "sunset", name: "Sunset Orange", primary: ThemeColors.sunsetPrimary, accent: ThemeColors.sunsetAccent, background: ThemeColors.backgroundDark, surface: ThemeColors.surfaceDark, textPrimary: ThemeColors.textPrimaryOnDark, textSecondary: ThemeColors.textSecondaryOnDark),
-            AppTheme(id: "rose", name: "Rose Pink", primary: ThemeColors.rosePrimary, accent: ThemeColors.roseAccent, background: ThemeColors.backgroundDark, surface: ThemeColors.surfaceDark, textPrimary: ThemeColors.textPrimaryOnDark, textSecondary: ThemeColors.textSecondaryOnDark)
+            AppTheme(
+                id: "applePremium",
+                name: "Apple Premium",
+                primary: ThemeColors.primary,
+                accent: ThemeColors.accent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary
+            )
         ]
-        self.selectedIndex = 0
     }
 
     public func selectTheme(at index: Int) {

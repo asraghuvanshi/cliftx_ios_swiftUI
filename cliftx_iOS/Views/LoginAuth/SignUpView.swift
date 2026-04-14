@@ -33,10 +33,10 @@ struct SignUpView: View {
     @State private var registeredEmail = ""
     
     var isFormValid: Bool {
-        !fullName.isEmpty && 
-        !email.isEmpty && 
-        email.contains("@") && 
-        !password.isEmpty && 
+        !fullName.isEmpty &&
+        !email.isEmpty &&
+        email.contains("@") &&
+        !password.isEmpty &&
         password.count >= 6 &&
         password == confirmPassword &&
         agreeToTerms
@@ -166,15 +166,13 @@ struct SignUpView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 
-                // Sign Up button
                 PrimaryButton(UIButtonTitle.signup, isLoading: isLoading) { signUp() }
                     .padding(.horizontal, 24)
                     .padding(.top, 35)
-             
+                
                 
                 Spacer(minLength: 20)
                 
-                // Sign in section
                 HStack(spacing: 8) {
                     Text(UITitle.alreadyHaveAccount)
                         .foregroundColor(themeManager.current.textSecondary.opacity(0.5))
@@ -196,7 +194,6 @@ struct SignUpView: View {
                 themeManager.current.background
                     .ignoresSafeArea()
                 
-                // Subtle animated gradient orbs
                 Circle()
                     .fill(themeManager.current.primary.opacity(0.12))
                     .frame(width: 280, height: 280)
@@ -236,7 +233,7 @@ struct SignUpView: View {
             EmailVerificationView(email: registeredEmail)
                 .navigationBarBackButtonHidden(true)
         }
-
+        
     }
     
     private func signUp() {
@@ -254,8 +251,8 @@ struct SignUpView: View {
     }
 }
 
-
-#Preview {
-    SignUpView()
-        .environmentObject(ThemeManager())
-}
+//
+//#Preview {
+//    SignUpView()
+//        .environmentObject(ThemeManager())
+//}

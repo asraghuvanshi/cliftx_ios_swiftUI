@@ -20,19 +20,6 @@ struct HomeView: View {
                 }
                 .tag(0)
             
-//            MatchesView()
-//                .tabItem {
-//                    Image(systemName: selectedTab == 1 ? "message.fill" : "message")
-//                    Text("Matches")
-//                }
-//                .tag(1)
-//            
-//            ProfileView()
-//                .tabItem {
-//                    Image(systemName: selectedTab == 2 ? "person.fill" : "person")
-//                    Text("Profile")
-//                }
-//                .tag(2)
         }
         .tint(themeManager.current.primary)
     }
@@ -86,6 +73,6 @@ struct MockData {
     ]
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}

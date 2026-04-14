@@ -3,6 +3,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject private var themeManager = ThemeManager()
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var email = ""
     @State private var password = ""
@@ -18,28 +19,45 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Deep elegant background
                 themeManager.current.background
                     .ignoresSafeArea()
-                
-                // Subtle animated gradient orbs
+                // Apple-style adaptive glow
                 Circle()
-                    .fill(themeManager.current.primary.opacity(0.15))
-                    .frame(width: 300, height: 300)
-                    .position(x: -50, y: 100)
-                    .blur(radius: 60)
-                
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                themeManager.current.primary
+                                    .opacity(colorScheme == .dark ? 0.45 : 0.25),
+                                themeManager.current.accent
+                                    .opacity(colorScheme == .dark ? 0.18 : 0.10)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 340, height: 340)
+                    .position(x: -70, y: 120)
+                    .blur(radius: colorScheme == .dark ? 90 : 60)
+
                 Circle()
-                    .fill(themeManager.current.accent.opacity(0.12))
-                    .frame(width: 250, height: 250)
-                    .position(x: UIScreen.main.bounds.width + 50, y: UIScreen.main.bounds.height - 300)
-                    .blur(radius: 60)
-                
-                Circle()
-                    .fill(themeManager.current.primary.opacity(0.1))
-                    .frame(width: 200, height: 200)
-                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 150)
-                    .blur(radius: 50)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                themeManager.current.accent
+                                    .opacity(colorScheme == .dark ? 0.35 : 0.18),
+                                themeManager.current.primary
+                                    .opacity(colorScheme == .dark ? 0.12 : 0.08)
+                            ],
+                            startPoint: .topTrailing,
+                            endPoint: .bottomLeading
+                        )
+                    )
+                    .frame(width: 260, height: 260)
+                    .position(
+                        x: UIScreen.main.bounds.width + 40,
+                        y: UIScreen.main.bounds.height - 320
+                    )
+                    .blur(radius: colorScheme == .dark ? 80 : 55)
                 
                 VStack(spacing: 0) {
                     Spacer(minLength: 40)
@@ -161,7 +179,7 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView()
-        .environment(\.themeManager, ThemeManager())
-}
+//#Preview {
+//    LoginView()
+//        .environment(\.themeManager, ThemeManager())
+//}
