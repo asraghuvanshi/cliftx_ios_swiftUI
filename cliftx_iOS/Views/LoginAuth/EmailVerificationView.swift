@@ -148,7 +148,7 @@ struct EmailVerificationView: View {
                 }
             }
             .navigationDestination(isPresented: $navigateToCompleteProfile) {
-                
+                OnboardingFlowView(email: email)
             }
         }
     }

