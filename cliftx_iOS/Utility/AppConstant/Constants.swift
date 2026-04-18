@@ -14,7 +14,7 @@ struct UITitle {
     static let forgotPassword = "Forgot Password?"
     static let tagline = "Find your connection"
 
-    // Forgot Password modal
+    // Forgot Password 
     static let resetPasswordTitle = "Reset Password"
     static let resetPasswordSubtitle = "Enter your email to receive reset instructions"
     static let signUpPrompt = "Don't have an account?"
@@ -42,5 +42,4 @@ struct UIButtonTitle {
     static let cancel = "Cancel"
     static let send = "Send"
     static let gotIt = "Got It"
-    
 }

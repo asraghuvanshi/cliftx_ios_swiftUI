@@ -74,8 +74,8 @@ struct EmailVerificationView: View {
                             }
                             .padding(.bottom, 20)
                             
-                            // OTP Input Fields
-                            HStack(spacing: 14) {
+                            // OTP Input Fields - Fixed spacing
+                            HStack(spacing: 12) {
                                 ForEach(0..<6, id: \.self) { index in
                                     OTPTextField(
                                         text: $otpCode[index],
@@ -96,10 +96,10 @@ struct EmailVerificationView: View {
                                 }
                             }
                             .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 24)
                             .onAppear { focusedField = 0 }
-                            //                            .padding(.horizontal)
-                            // Verify Button
                             
+                            // Verify Button
                             PrimaryButton("Verify Email", isLoading: isLoading) {
                                 verifyEmail()
                             }
@@ -143,12 +143,12 @@ struct EmailVerificationView: View {
                             
                             Spacer(minLength: 50)
                         }
-                        .padding(.horizontal, 24)
+                        .padding(.horizontal, 0) // Remove horizontal padding from VStack
                     }
                 }
             }
             .navigationDestination(isPresented: $navigateToCompleteProfile) {
-                OnboardingFlowView(email: email)
+                PersonalInfoScreen()
             }
         }
     }
@@ -186,10 +186,6 @@ struct EmailVerificationView: View {
     }
 }
 
-
-
-
 //#Preview {
 //    EmailVerificationView(email: "dummyid@gmail.com")
 //}
-//
