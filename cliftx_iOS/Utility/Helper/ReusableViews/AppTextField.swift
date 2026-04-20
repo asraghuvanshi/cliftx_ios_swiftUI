@@ -8,77 +8,58 @@
 
 import SwiftUI
 
-public struct AppTextField: View {
-    @Environment(\.themeManager) private var theme
-
-    public enum Kind { case plain, secure }
-
-    let kind: Kind
-    let systemIcon: String?
-    let title: String
+// MARK: - Custom TextField
+struct AppTextField: View {
+    let placeholder: String
     @Binding var text: String
+    let isSecure: Bool
+    let icon: String
     var focused: FocusState<Bool>.Binding
-
-    public init(
-        _ title: String,
-        text: Binding<String>,
-        kind: Kind = .plain,
-        systemIcon: String? = nil,
-        focused: FocusState<Bool>.Binding
-    ) {
+    
+    @EnvironmentObject var themeManager: ThemeManager
+    @State private var isEditing = false
+    
+    init(_ placeholder: String, text: Binding<String>, isSecure: Bool = false, icon: String, focused: FocusState<Bool>.Binding) {
+        self.placeholder = placeholder
         self._text = text
-        self.kind = kind
-        self.systemIcon = systemIcon
-        self.title = title
+        self.isSecure = isSecure
+        self.icon = icon
         self.focused = focused
     }
-
-    public var body: some View {
+    
+    var body: some View {
         HStack(spacing: 14) {
-
-            if let icon = systemIcon {
-                Image(systemName: icon)
-                    .font(.system(size: 18, weight: .semibold))
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(
-                        focused.wrappedValue
-                        ? theme.current.primary
-                        : theme.current.textSecondary
-                    )
-                    .frame(width: 26)
-            }
-
+            Image(systemName: icon)
+                .font(.system(size: 18, weight: .medium))
+                .foregroundColor(focused.wrappedValue ? themeManager.current.primary : themeManager.current.textSecondary)
+                .frame(width: 24)
+            
             Group {
-                if kind == .secure {
-                    SecureField(title, text: $text)
-                        .textContentType(.password)
-                        .focused(focused)
+                if isSecure {
+                    SecureField(placeholder, text: $text)
                 } else {
-                    TextField(title, text: $text)
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.emailAddress)
-                        .textContentType(.emailAddress)
-                        .focused(focused)
+                    TextField(placeholder, text: $text)
                 }
             }
-            .foregroundColor(theme.current.textPrimary)
-            .tint(theme.current.primary) // cursor color
+            .textContentType(isSecure ? .password : .emailAddress)
+            .autocapitalization(isSecure ? .none : .allCharacters)
+            .disableAutocorrection(true)
+            .foregroundColor(themeManager.current.textPrimary)
+            .focused(focused)
         }
-        .padding(.horizontal, 18)
         .padding(.vertical, 16)
+        .padding(.horizontal, 18)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(theme.current.surface.opacity(0.9))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(
-                    focused.wrappedValue
-                    ? theme.current.primary
-                    : theme.current.surface.opacity(0.4),
-                    lineWidth: 1.5
+                .fill(themeManager.current.surface)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(
+                            focused.wrappedValue ? themeManager.current.primary.opacity(0.5) : Color.clear,
+                            lineWidth: 1
+                        )
                 )
         )
-        .animation(.easeOut(duration: 0.2), value: focused.wrappedValue)
+        .shadow(color: themeManager.current.primary.opacity(focused.wrappedValue ? 0.2 : 0), radius: 8)
     }
 }

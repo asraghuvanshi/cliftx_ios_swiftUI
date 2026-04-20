@@ -116,14 +116,8 @@ struct ProfessionalInfoScreen: View {
                                     .font(.caption)
                                     .foregroundColor(themeManager.current.textSecondary)
                                     .padding(.leading, 4)
-                                
-                                AppTextField(
-                                    "e.g., Google, Microsoft, School Name",
-                                    text: $companyName,
-                                    kind: .plain,
-                                    systemIcon: "building.2.fill",
-                                    focused: $isCompanyFocused
-                                )
+                                AppTextField("e.g., Google, Microsoft, School Name", text: $companyName, icon:"building.2.fill", focused: $isCompanyFocused)
+
                             }
                             
                             // Job Title
@@ -132,14 +126,8 @@ struct ProfessionalInfoScreen: View {
                                     .font(.caption)
                                     .foregroundColor(themeManager.current.textSecondary)
                                     .padding(.leading, 4)
-                                
-                                AppTextField(
-                                    "e.g., Senior iOS Developer",
-                                    text: $jobTitle,
-                                    kind: .plain,
-                                    systemIcon: "person.badge.key.fill",
-                                    focused: $isJobTitleFocused
-                                )
+                                AppTextField("e.g., Senior iOS Developer", text: $jobTitle, icon: "person.badge.key.fill", focused: $isJobTitleFocused)
+
                             }
                             
                             // Profession
@@ -205,13 +193,7 @@ struct ProfessionalInfoScreen: View {
                                     .foregroundColor(themeManager.current.textSecondary)
                                     .padding(.leading, 4)
                                 
-                                AppTextField(
-                                    "City, State or Remote",
-                                    text: $workLocation,
-                                    kind: .plain,
-                                    systemIcon: "location.fill",
-                                    focused: $isLocationFocused
-                                )
+                                AppTextField("City, State or Remote",text: $workLocation,icon: "location.fill",focused: $isLocationFocused)
                             }
                         }
                         .padding(.horizontal, 24)

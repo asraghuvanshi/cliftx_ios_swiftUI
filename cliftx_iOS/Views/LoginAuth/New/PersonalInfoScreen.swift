@@ -105,14 +105,7 @@ struct PersonalInfoScreen: View {
                                     .font(.caption)
                                     .foregroundColor(themeManager.current.textSecondary)
                                     .padding(.leading, 4)
-                                
-                                AppTextField(
-                                    "Enter your full name",
-                                    text: $fullName,
-                                    kind: .plain,
-                                    systemIcon: "person.fill",
-                                    focused: $isNameFocused
-                                )
+                                AppTextField("Enter your full name", text: $fullName, icon: "person.fill", focused: $isNameFocused)
                             }
                             
                             // Gender Selection

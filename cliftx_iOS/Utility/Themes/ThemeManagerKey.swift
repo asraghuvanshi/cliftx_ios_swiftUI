@@ -7,51 +7,104 @@
 
 
 import SwiftUI
+import Combine
 
-private struct ThemeManagerKey: EnvironmentKey {
-    static let defaultValue = ThemeManager()
-}
-
-extension EnvironmentValues {
-    var themeManager: ThemeManager {
-        get { self[ThemeManagerKey.self] }
-        set { self[ThemeManagerKey.self] = newValue }
+// MARK: - AppTheme Model
+public struct AppTheme: Identifiable, Equatable {
+    public let id = UUID()
+    public let name: String
+    public let primary: Color
+    public let accent: Color
+    public let background: Color
+    public let surface: Color
+    public let textPrimary: Color
+    public let textSecondary: Color
+    public let gradientColors: [Color]
+    
+    public static func == (lhs: AppTheme, rhs: AppTheme) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
-// Reusable primary button styled with the current theme
-public struct PrimaryButton: View {
-    @Environment(\.themeManager) private var theme
-    let title: String
-    let isLoading: Bool
-    let action: () -> Void
-
-    public init(_ title: String, isLoading: Bool = false, action: @escaping () -> Void) {
-        self.title = title
-        self.isLoading = isLoading
-        self.action = action
+// MARK: - Enhanced Theme Manager
+public final class ThemeManager: ObservableObject {
+    
+    @Published public var themes: [AppTheme]
+    @Published public var selectedIndex: Int = 0
+    
+    public var current: AppTheme {
+        themes[selectedIndex]
     }
-
-    public var body: some View {
-        Button(action: action) {
-            HStack(spacing: 12) {
-                if isLoading {
-                    ProgressView()
-                        .tint(.white)
-                }
-                Text(isLoading ? "Please wait…" : title)
-                    .font(.headline.weight(.semibold))
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 54)
-            .foregroundColor(.white)
-            .background(
-                RoundedRectangle(cornerRadius: 27)
-                    .fill(theme.current.primary)
-                    .shadow(color: theme.current.primary.opacity(0.25), radius: 10, x: 0, y: 6)
+    
+    public init() {
+        self.themes = [
+            AppTheme(
+                name: "Midnight Nebula",
+                primary: ThemeColors.midnightPrimary,
+                accent: ThemeColors.midnightAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.midnightPrimary, ThemeColors.midnightAccent]
+            ),
+            AppTheme(
+                name: "Ocean Depths",
+                primary: ThemeColors.oceanPrimary,
+                accent: ThemeColors.oceanAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.oceanPrimary, ThemeColors.oceanAccent]
+            ),
+            AppTheme(
+                name: "Cyber Punk",
+                primary: ThemeColors.cyberPrimary,
+                accent: ThemeColors.cyberAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.cyberPrimary, ThemeColors.cyberAccent]
+            ),
+            AppTheme(
+                name: "Emerald Forest",
+                primary: ThemeColors.emeraldPrimary,
+                accent: ThemeColors.emeraldAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.emeraldPrimary, ThemeColors.emeraldAccent]
+            ),
+            AppTheme(
+                name: "Sunset Blaze",
+                primary: ThemeColors.sunsetPrimary,
+                accent: ThemeColors.sunsetAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.sunsetPrimary, ThemeColors.sunsetAccent]
+            ),
+            AppTheme(
+                name: "Royal Purple",
+                primary: ThemeColors.royalPrimary,
+                accent: ThemeColors.royalAccent,
+                background: ThemeColors.background,
+                surface: ThemeColors.surface,
+                textPrimary: ThemeColors.textPrimary,
+                textSecondary: ThemeColors.textSecondary,
+                gradientColors: [ThemeColors.royalPrimary, ThemeColors.royalAccent]
             )
+        ]
+    }
+    
+    public func selectTheme(at index: Int) {
+        guard themes.indices.contains(index) else { return }
+        withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
+            selectedIndex = index
         }
-        .buttonStyle(.plain)
-        .disabled(isLoading)
     }
 }
