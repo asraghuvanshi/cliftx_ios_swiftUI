@@ -137,11 +137,11 @@ struct SignUpView: View {
                         .offset(y: animateFields ? 0 : -40)
                         .opacity(animateFields ? 1 : 0)
                         
-                        // Input Fields (using same AppTextField as LoginView)
+                        // Input Fields
                         VStack(spacing: 20) {
-                            AppTextField("Full Name", text: $fullName, icon: "person.fill", focused: $isNameFocused)
+                            AppTextField("full_name", text: $fullName, icon: "person.fill", focused: $isNameFocused)
                             
-                            AppTextField("Email", text: $email, icon: "envelope.fill", focused: $isEmailFocused)
+                            AppTextField("email".localizedLowercase, text: $email, icon: "envelope.fill", focused: $isEmailFocused)
                             
                             VStack(alignment: .leading, spacing: 8) {
                                 AppTextField("Password", text: $password, isSecure: true, icon: "lock.fill", focused: $isPasswordFocused)
